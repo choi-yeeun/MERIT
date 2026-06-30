@@ -111,12 +111,14 @@ header.hero {
     radial-gradient(55% 55% at 82% 8%, var(--lav-soft) 0%, transparent 60%);
 }
 .badge {
-  display: inline-block; font-size: .8rem; font-weight: 600; letter-spacing: .6px;
-  text-transform: uppercase; color: var(--accent-2);
-  background: var(--surface); border: 1px solid var(--border);
-  padding: .35rem .9rem; border-radius: 999px; box-shadow: var(--shadow);
-  margin-bottom: 1.3rem;
+  display: inline-block; font-size: 1.05rem; font-weight: 800; letter-spacing: 1px;
+  text-transform: uppercase; color: #fff;
+  background: linear-gradient(120deg, var(--mint), var(--blue));
+  border: none;
+  padding: .5rem 1.2rem; border-radius: 999px; box-shadow: var(--shadow-lg);
+  margin-bottom: 1.4rem;
 }
+html[data-theme="dark"] .badge { color: #0e1614; }
 h1.title {
   font-size: clamp(1.9rem, 4.2vw, 3.05rem);
   line-height: 1.15; font-weight: 800; letter-spacing: -.5px;
