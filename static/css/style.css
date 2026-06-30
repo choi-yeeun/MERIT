@@ -120,7 +120,7 @@ header.hero {
 h1.title {
   font-size: clamp(1.9rem, 4.2vw, 3.05rem);
   line-height: 1.15; font-weight: 800; letter-spacing: -.5px;
-  margin: 0 auto 1.1rem; max-width: 16ch;
+  margin: 0 auto 1.1rem; max-width: none;
 }
 h1.title .merit-name {
   background: linear-gradient(120deg, var(--mint), var(--blue) 55%, var(--lav));
@@ -128,7 +128,7 @@ h1.title .merit-name {
 }
 .subtitle { color: var(--text-soft); font-size: 1.05rem; max-width: 60ch; margin: 0 auto 1.6rem; }
 
-.authors { font-size: 1.06rem; margin: 0 auto .5rem; max-width: 50ch; }
+.authors { font-size: 1.06rem; margin: 0 auto .5rem; max-width: none; }
 .authors a { color: var(--text); font-weight: 600; }
 .authors a:hover { color: var(--accent); }
 .authors sup { color: var(--accent); font-weight: 700; }
