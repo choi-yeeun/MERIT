@@ -61,10 +61,12 @@
   </div>
 </header>
 
-<!-- ============ TEASER ============ -->
-<section style="padding-top:34px;">
-  <div class="wrap reveal">
-    <figure class="fig">
+<!-- ============ ABSTRACT + TEASER ============ -->
+<section id="abstract" class="tinted">
+  <div class="wrap narrow reveal">
+    <h2 class="section-title">Abstract</h2>
+    <p class="section-sub">MERIT = <b>M</b>ulti-key <b>E</b>pisodic <b>R</b>etrieval with <b>I</b>nference-time <b>T</b>emporal expansion.</p>
+    <figure class="fig" style="margin-bottom:1.8rem;">
       <img src="static/images/fig1.png" alt="MERIT overview: previous hierarchical graph memory vs. MERIT's simple multi-key memory with temporal expansion, and performance comparison." />
       <figcaption>
         <b>(a)</b> Previous methods construct hierarchical, graph-based episodic and semantic memories and aggregate across them at inference.
@@ -72,14 +74,6 @@
         <b>(c)</b> MERIT outperforms EgoRAG and WorldMM across EgoLifeQA, Video-MME (Long), and LVBench.
       </figcaption>
     </figure>
-  </div>
-</section>
-
-<!-- ============ ABSTRACT ============ -->
-<section id="abstract" class="tinted">
-  <div class="wrap narrow reveal">
-    <h2 class="section-title">Abstract</h2>
-    <p class="section-sub">MERIT = <b>M</b>ulti-key <b>E</b>pisodic <b>R</b>etrieval with <b>I</b>nference-time <b>T</b>emporal expansion.</p>
     <div class="abstract-box">
       <p>
         When videos extend from hours to days, directly processing them end-to-end becomes impractical for current Multi-modal Large Language Models (MLLMs). This ultra-long setting necessitates a two-stage paradigm: query-agnostic memory construction followed by retrieval-based inference. Prior work invests in complex memory construction to pre-model high-level relations in videos, despite not knowing the downstream query at build time. We instead <b>prioritize high-recall retrievability during memory building, and defer query-specific, high-level relation composition to inference time.</b>
@@ -106,7 +100,7 @@
 
     <div class="reveal">
       <h3 style="text-align:center;margin:2.4rem 0 .2rem;font-size:1.2rem;">Multi-Key Indexing</h3>
-      <p class="section-sub" style="margin-bottom:1rem;">Each minimal segment is matched from diverse perspectives via four decoupled keys.</p>
+      <p class="section-sub" style="margin-bottom:1rem;max-width:none;">Each minimal segment is matched from diverse perspectives via four decoupled keys.</p>
       <div class="keys-grid">
         <div class="key-card k-evt"><div class="ico">🎬</div><h4>Event / Action</h4><p>Observable physical actions and interactions between entities.</p></div>
         <div class="key-card k-dial"><div class="ico">💬</div><h4>Dialogue / Mention</h4><p>Spoken content, exact words, or commands from the audio track.</p></div>
@@ -141,7 +135,7 @@
         <div class="stat"><div class="num">71.2</div><div class="lbl">EgoLifeQA (Avg)</div><div class="delta">+5.6 vs. SOTA</div></div>
         <div class="stat"><div class="num">71.8</div><div class="lbl">LVBench</div><div class="delta">+9.9 vs. SOTA</div></div>
         <div class="stat"><div class="num">77.7</div><div class="lbl">Video-MME (Long)</div><div class="delta">+1.1 vs. SOTA</div></div>
-        <div class="stat"><div class="num">8.4×</div><div class="lbl">Fewer input tokens</div><div class="delta">vs. WorldMM</div></div>
+        <div class="stat"><div class="num">8.4×</div><div class="lbl">Fewer input tokens</div><div class="delta">vs. SOTA</div></div>
       </div>
     </div>
 
