@@ -9,20 +9,23 @@
 <meta property="og:description" content="Keep It Simple: a high-recall episodic memory with on-demand neighbor filtering achieves SOTA on EgoLifeQA, LVBench, and Video-MME (Long)." />
 <meta property="og:image" content="static/images/fig1.png" />
 <meta property="og:type" content="website" />
+<link rel="icon" type="image/png" href="static/images/favicon.png?v=5" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="static/css/style.css" />
-<script src="static/js/main.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+<link rel="stylesheet" href="static/css/style.css?v=51" />
+<script src="static/js/main.js?v=2"></script>
 </head>
 <body>
 
 <!-- ============ NAV ============ -->
 <nav>
   <div class="wrap">
-    <div class="brand"><span class="dot"></span> MERIT</div>
+    <a class="brand" href="#top"><img src="static/images/key_logo_outlined.png" alt="" class="brand-icon" /> MERIT</a>
     <div class="nav-links">
-      <a href="#abstract">Abstract</a>
+      <a href="#motivation">Motivation</a>
       <a href="#method">Method</a>
       <a href="#results">Results</a>
       <a href="#qualitative">Qualitative</a>
@@ -36,50 +39,87 @@
 </nav>
 
 <!-- ============ HERO ============ -->
-<header class="hero">
+<header class="hero" id="top">
   <div class="wrap">
-    <span class="badge">ECCV 2026</span>
-    <h1 class="title">Keep It Simple: Multi-Key Episodic Memory<br>Retrieval for Ultra-Long Video Understanding</h1>
-    <p class="subtitle">A simple yet effective agentic framework — <span style="color:var(--accent);font-weight:700">MERIT</span> — that prioritizes high-recall retrieval and defers semantic composition to inference time.</p>
+    <span class="badge">ECCV 2026 <span class="oral">Oral</span></span>
+    <h1 class="title"><span class="kis">Keep It Simple:</span> Multi-Key Episodic Memory<br>Retrieval for Ultra-Long Video Understanding</h1>
 
     <p class="authors">
-      <a href="#">Yeeun Choi</a><sup>1</sup>,
-      <a href="#">Youngbeom Yoo</a><sup>1</sup>,
-      <a href="#">Joon-Young Lee</a><sup>2</sup>,<br>
-      <a href="#">Hyolim Kang</a><sup>1,†</sup>,
-      <a href="#">Seon Joo Kim</a><sup>1,†</sup>
+      <a href="https://choi-yeeun.github.io" target="_blank" rel="noopener">Yeeun Choi</a><sup>1</sup>,
+      <a href="https://sites.google.com/view/youngbeomyoo/home" target="_blank" rel="noopener">Youngbeom Yoo</a><sup>1</sup>,
+      <a href="https://joonyoung-cv.github.io/" target="_blank" rel="noopener">Joon-Young Lee</a><sup>2</sup>,
+      <a href="https://sites.google.com/view/hyolim" target="_blank" rel="noopener">Hyolim Kang</a><sup>1,†</sup>,
+      <a href="https://www.ciplab.kr/members/professor" target="_blank" rel="noopener">Seon Joo Kim</a><sup>1,†</sup>
     </p>
     <p class="affil"><sup>1</sup> Yonsei University &nbsp;&nbsp; <sup>2</sup> Adobe Research</p>
     <p class="corr">† Co-corresponding authors</p>
 
     <div class="btns">
-      <a class="btn" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Paper</a>
-      <a class="btn" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> arXiv</a>
-      <a class="btn" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Code</a>
-      <a class="btn alt" href="#bibtex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> BibTeX</a>
+      <a class="btn" href="#"><i class="fas fa-file-pdf"></i> Paper</a>
+      <a class="btn" href="#"><i class="ai ai-arxiv"></i> arXiv</a>
+      <a class="btn" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Code</a>
+      <a class="btn alt" href="#bibtex"><svg viewBox="0 0 448 512" fill="currentColor"><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216z"/></svg> BibTeX</a>
     </div>
   </div>
 </header>
 
-<!-- ============ ABSTRACT + TEASER ============ -->
-<section id="abstract" class="tinted">
+<!-- ============ TL;DR ============ -->
+<section id="tldr">
+  <div class="wrap">
+    <div class="tldr-box reveal">
+      <span class="tldr-tag">TL;DR</span>
+      <p>Prior ultra-long video methods pour effort into complex hierarchical or graph memory at build time — before the query is even known. <b>MERIT</b> flips this: it builds a simple episodic <b>multi-key memory</b> for high-recall retrieval, and defers query-specific reasoning to inference time via on-demand <b>neighbor filtering</b>. <em>Without building complex, high-cost memory, MERIT achieves state-of-the-art results on EgoLifeQA, LVBench, and Video-MME (Long).</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEMO ============ -->
+<section id="demo">
+  <div class="wrap">
+    <div class="demo-video">
+      <video autoplay loop muted playsinline preload="auto">
+        <source src="static/videos/merit_teaser.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <p class="demo-caption">A simple yet effective agentic framework — <span style="color:var(--accent);font-weight:700">MERIT</span> — that prioritizes high-recall retrieval and defers semantic composition to inference time.</p>
+  </div>
+</section>
+
+<!-- ============ MOTIVATION ============ -->
+<section id="motivation" class="tinted">
   <div class="wrap narrow reveal">
-    <h2 class="section-title">Abstract</h2>
-    <p class="section-sub">MERIT = <b>M</b>ulti-key <b>E</b>pisodic <b>R</b>etrieval with <b>I</b>nference-time <b>T</b>emporal expansion.</p>
-    <figure class="fig" style="margin-bottom:1.8rem;">
+    <h2 class="section-title">Motivation</h2>
+    <p class="section-sub" style="max-width:none;">The bottleneck isn't memory quality — it's <span class="mark">retrieval</span>.</p>
+
+    <p class="lead">When a video stretches from hours to <b>days</b>, you can't feed it into an MLLM end-to-end. So the field splits the task into <b>two stages</b>: first build an <b>external memory</b> from the whole video — <em>before any question is known</em> — then, at inference time, <b>retrieve</b> from that memory to answer each query.</p>
+
+    <figure class="fig fig-padded" style="margin:1.8rem 0;">
       <img src="static/images/fig1.png" alt="MERIT overview: previous hierarchical graph memory vs. MERIT's simple multi-key memory with temporal expansion, and performance comparison." />
       <figcaption>
-        <b>(a)</b> Previous methods construct hierarchical, graph-based episodic and semantic memories and aggregate across them at inference.
-        <b>(b)</b> <b>MERIT</b> builds a simple episodic <i>multi-key</i> memory and, at inference time, retrieves matched clips with on-demand <i>temporal expansion</i> for query-driven semantic reasoning.
+        <b>(a)</b> Prior methods build hierarchical, graph-based memories and aggregate across them at inference.
+        <b>(b)</b> <b>MERIT</b> builds a simple episodic <i>multi-key</i> memory and, at query time, retrieves matched clips with on-demand <i>temporal expansion</i>.
         <b>(c)</b> MERIT outperforms EgoRAG and WorldMM across EgoLifeQA, Video-MME (Long), and LVBench.
       </figcaption>
     </figure>
-    <div class="abstract-box">
-      <p>
-        When videos extend from hours to days, directly processing them end-to-end becomes impractical for current Multi-modal Large Language Models (MLLMs). This ultra-long setting necessitates a two-stage paradigm: query-agnostic memory construction followed by retrieval-based inference. Prior work invests in complex memory construction to pre-model high-level relations in videos, despite not knowing the downstream query at build time. We instead <b>prioritize high-recall retrievability during memory building, and defer query-specific, high-level relation composition to inference time.</b>
-        To this end, we propose <b>MERIT</b>, a simple yet effective agentic framework for ultra-long video understanding. First, we formulate an episodic <b>multi-key representation</b> that enables precise retrieval of fine-grained memories through a simple key-matching mechanism. Second, we introduce a <b>neighbor filtering</b> mechanism to capture broader semantic context without the massive computational overhead of global memory construction, by expanding the temporal scope exclusively around the retrieved segments at inference time. MERIT achieves state-of-the-art performance across three long-video benchmarks: EgoLifeQA, LVBench, and Video-MME (Long).
-      </p>
+
+    <div class="mot-grid">
+      <div class="mot-card problem">
+        <h4>The problem</h4>
+        <p>Prior work over-builds <b>complex memory</b> — hierarchies and graphs — running the strongest MLLMs over the whole video in many passes. Because it's <b>query-agnostic</b>, this expensive abstraction may not match what is ultimately asked.</p>
+      </div>
+      <div class="mot-card solution">
+        <h4>Our take</h4>
+        <p>Keep the memory <b>simple and high-fidelity</b>, and defer high-level relation reasoning to <b>inference time</b> — when the query finally tells you which relations and abstractions actually matter.</p>
+      </div>
     </div>
+
+    <div class="insight-callout">
+      <span class="ic-tag">Key idea</span>
+      <p><b>Intelligence Allocation.</b> Spending your strongest MLLM on preprocessing done <em>before the task is even specified</em> is wasteful. Preserve high-fidelity episodic evidence and defer semantic composition to query time. The bottleneck then shifts from pre-building static semantics to <b>high-recall retrieval</b> that reliably surfaces the right evidence.</p>
+    </div>
+
+    <p>MERIT embraces exactly this: build a <b>simple episodic memory</b> tuned for high recall, and compose task-specific relations <b>on demand</b> at query time — through two lightweight ideas below.</p>
   </div>
 </section>
 
@@ -88,37 +128,41 @@
   <div class="wrap">
     <div class="reveal">
       <h2 class="section-title">Method</h2>
-      <p class="section-sub">A minimalist memory-based agentic pipeline: lightweight episodic indexing, then query-driven temporal expansion on demand.</p>
-      <figure class="fig">
+      <p class="section-sub" style="max-width:none;">MERIT = <b>M</b>ulti-key <b>E</b>pisodic <b>R</b>etrieval with <b>I</b>nference-time <b>T</b>emporal expansion.</p>
+      <figure class="fig fig-padded">
         <img src="static/images/fig2.png" alt="MERIT pipeline. Stage 1: episodic memory construction with four keys per 30s clip. Stage 2: agentic retrieval with key-wise max similarity and neighbor filtering." />
         <figcaption>
-          <b>Stage 1 — Episodic memory construction.</b> Each 30-second clip is densely captioned, then an episodic multi-key extraction derives four complementary keys per clip, forming memory <i>M</i>.
+          <b>Stage 1 — Episodic memory construction.</b> Each 30-second clip is densely captioned, then a multi-key extraction derives four complementary keys per clip, forming a lightweight key–value memory <i>M</i>.
           <b>Stage 2 — Agentic retrieval &amp; answering.</b> The solver regenerates a query, matches it against the keys (key-wise max similarity) to retrieve relevant clips, and <i>neighbor filtering</i> expands the temporal context to distill query-relevant evidence for the final answer.
         </figcaption>
       </figure>
     </div>
 
-    <div class="reveal">
-      <h3 style="text-align:center;margin:2.4rem 0 .2rem;font-size:1.2rem;">Multi-Key Indexing</h3>
-      <p class="section-sub" style="margin-bottom:1rem;max-width:none;">Each minimal segment is matched from diverse perspectives via four decoupled keys.</p>
-      <div class="keys-grid">
-        <div class="key-card k-evt"><div class="ico">🎬</div><h4>Event / Action</h4><p>Observable physical actions and interactions between entities.</p></div>
-        <div class="key-card k-dial"><div class="ico">💬</div><h4>Dialogue / Mention</h4><p>Spoken content, exact words, or commands from the audio track.</p></div>
-        <div class="key-card k-obj"><div class="ico">📦</div><h4>Object</h4><p>Items handled, requested, or moved, along with state transitions.</p></div>
-        <div class="key-card k-sum"><div class="ico">📝</div><h4>Summary</h4><p>A compact keyword-style abstraction of the clip's core narrative.</p></div>
+    <!-- Method block 1 -->
+    <div class="method-block reveal">
+      <span class="mb-num">1</span>
+      <div class="mb-body">
+        <h3><span class="mark">Multi-Key Memory</span></h3>
+        <p>A clip can be relevant for very different reasons — a physical action, a spoken mention, an object being handled, or just coarse scene context. Collapsing all of that into a single index is brittle. Instead, MERIT attaches <b>four complementary keys</b> to every 30-second clip, and scores relevance by the <b>maximum similarity</b> across a clip's keys — so each clip can match through its <i>best-aligned</i> aspect. This late-interaction matching is what drives MERIT's <b>high recall</b>.</p>
+        <div class="keys-grid">
+          <div class="key-card k-evt"><div class="ico">🎬</div><h4>Event / Action</h4><p>Observable physical actions and interactions between entities.</p></div>
+          <div class="key-card k-dial"><div class="ico">💬</div><h4>Dialogue / Mention</h4><p>Spoken content, exact words, or commands from the audio track.</p></div>
+          <div class="key-card k-obj"><div class="ico">📦</div><h4>Object</h4><p>Items handled, requested, or moved, along with state transitions.</p></div>
+          <div class="key-card k-sum"><div class="ico">📝</div><h4>Summary</h4><p>A compact keyword-style abstraction of the clip's core narrative.</p></div>
+        </div>
       </div>
     </div>
 
-    <div class="ideas reveal">
-      <div class="idea a">
-        <span class="tag">Idea 1 · Memory</span>
-        <h3>Multi-Key Episodic Memory</h3>
-        <p>Instead of hierarchical or graph structures, MERIT attaches multiple complementary keys to each fine-grained 30s segment. Clip relevance is the <b>maximum cosine similarity</b> over its keys — letting every clip match through its best-aligned aspect for high-recall retrieval.</p>
-      </div>
-      <div class="idea b">
-        <span class="tag">Idea 2 · Inference</span>
-        <h3>Neighbor Filtering</h3>
-        <p>When a clip is retrieved, its temporally adjacent neighbors (±Δ) are attached on demand — the simplest graph over the timeline. A query-aware filter then distills only the relevant information, reconstructing coherent context <b>without pre-computed hierarchies</b>.</p>
+    <!-- Method block 2 -->
+    <div class="method-block reveal">
+      <span class="mb-num">2</span>
+      <div class="mb-body">
+        <h3><span class="mark">Neighbor Filtering</span></h3>
+        <p>The evidence needed to answer a question often spans several nearby moments, not a single 30-second clip. So when a clip is retrieved, MERIT attaches its temporally adjacent neighbors (±Δ) <b>on demand</b> — the simplest possible graph over the timeline — then uses the solver as a <b>query-aware filter</b> to distill only what's relevant. Coherent context is reconstructed at inference time, with <b>no pre-computed hierarchies</b>.</p>
+        <div class="nf-steps">
+          <div class="nf-step"><span class="nf-ico">↔</span><div><b>Temporal expansion</b><p>Pull in ±Δ adjacent clips around each retrieved anchor (e.g. ±1 min).</p></div></div>
+          <div class="nf-step"><span class="nf-ico">⌕</span><div><b>Query-aware refinement</b><p>The solver filters the expanded context, keeping only query-relevant evidence.</p></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -129,19 +173,24 @@
   <div class="wrap">
     <div class="reveal">
       <h2 class="section-title">State-of-the-Art Results</h2>
-      <p class="section-sub">MERIT establishes new SOTA across ultra-long and hour-long video QA — with a far simpler, cheaper memory pipeline.</p>
+      <p class="section-sub">New SOTA across ultra-long and hour-long video QA.</p>
 
       <div class="stats">
-        <div class="stat"><div class="num">71.2</div><div class="lbl">EgoLifeQA (Avg)</div><div class="delta">+5.6 vs. SOTA</div></div>
+        <div class="stat"><div class="num">71.2</div><div class="lbl">EgoLifeQA</div><div class="delta">+5.6 vs. SOTA</div></div>
         <div class="stat"><div class="num">71.8</div><div class="lbl">LVBench</div><div class="delta">+9.9 vs. SOTA</div></div>
         <div class="stat"><div class="num">77.7</div><div class="lbl">Video-MME (Long)</div><div class="delta">+1.1 vs. SOTA</div></div>
-        <div class="stat"><div class="num">8.4×</div><div class="lbl">Fewer input tokens</div><div class="delta">vs. SOTA</div></div>
+        <div class="stat"><div class="num">0.56</div><div class="lbl">Hit rate (highest)</div><div class="delta">simplest memory</div></div>
+      </div>
+
+      <div class="result-note">
+        <h3 class="rn-title"><span class="mark">The simplest memory, yet the best retrieval.</span></h3>
+        <p>MERIT uses only single-granularity 30-second clips with lightweight multi-keys — no hierarchies, no graphs — and still attains the <b>highest hit rate</b> and <b>highest accuracy</b>, confirming that precise retrieval is the real bottleneck in ultra-long video QA.</p>
       </div>
     </div>
 
     <!-- Table 1 -->
+    <h3 class="table-head reveal">Results on Ultra-Long Video QA <span>(EgoLifeQA)</span></h3>
     <div class="table-card reveal">
-      <div class="cap">EgoLifeQA <span>— accuracy (%) by QA type. <b>Bold</b> = best, <u>underline</u> = second best. Backbone solver in parentheses.</span></div>
       <div class="table-scroll">
         <table class="res">
           <thead>
@@ -174,8 +223,8 @@
     </div>
 
     <!-- Table 2 -->
-    <div class="table-card reveal">
-      <div class="cap">LVBench &amp; Video-MME (Long) <span>— accuracy (%). <b>Bold</b> = best.</span></div>
+    <h3 class="table-head narrow-head reveal">Results on Hour-Long Video QA <span>(LVBench &amp; Video-MME Long)</span></h3>
+    <div class="table-card narrow-tbl reveal">
       <div class="table-scroll">
         <table class="res">
           <thead><tr><th>Model</th><th>LVBench</th><th>Video-MME (L)</th></tr></thead>
@@ -201,7 +250,13 @@
         </table>
       </div>
     </div>
-    <p class="section-sub reveal" style="margin-bottom:0;">MERIT uses the <b>simplest memory key structure</b> yet attains the highest hit rate and accuracy — with an <b>8.4×</b> reduction in input tokens and <b>8.6×</b> in output tokens versus WorldMM.</p>
+    <h3 class="eff-title reveal">A fraction of the memory-building cost</h3>
+    <p class="section-sub reveal" style="margin-top:.2rem;">Against the graph-memory SOTA (WorldMM), MERIT builds its memory once per clip instead of re-reading and consolidating across many scales.</p>
+    <div class="eff-row reveal">
+      <div class="eff-card"><div class="eff-num">8.4×</div><div class="eff-lbl">fewer input tokens<br><span>815K vs. 6,860K</span></div></div>
+      <div class="eff-card"><div class="eff-num">8.6×</div><div class="eff-lbl">fewer output tokens<br><span>288K vs. 2,472K</span></div></div>
+      <div class="eff-card"><div class="eff-num">3.8×</div><div class="eff-lbl">fewer MLLM calls<br><span>6,223 vs. 23,731</span></div></div>
+    </div>
   </div>
 </section>
 
@@ -210,7 +265,7 @@
   <div class="wrap reveal">
     <h2 class="section-title">Qualitative Results</h2>
     <p class="section-sub">On EgoLifeQA: precise multi-key matching localizes the right moment, and neighbor filtering supplies the surrounding context relational queries need.</p>
-    <figure class="fig">
+    <figure class="fig fig-padded">
       <img src="static/images/fig3.png" alt="Qualitative results of MERIT on EgoLifeQA showing multi-key matching and neighbor filtering." />
       <figcaption>
         <b>(a)</b> The <i>event key</i> precisely matches the query, enabling retrieval of the exact target segment.
@@ -224,7 +279,7 @@
 <section id="bibtex" class="tinted">
   <div class="wrap narrow reveal">
     <h2 class="section-title">BibTeX</h2>
-    <p class="section-sub">Please cite MERIT if you find this work useful. <i>(Final entry will be updated with proceedings info.)</i></p>
+    <p class="section-sub">Please cite MERIT if you find this work useful. </p>
     <div class="bibtex-box">
       <button class="copy-btn" onclick="copyBibtex(this)">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -246,7 +301,6 @@
 <footer>
   <div class="wrap">
     <p>© 2026 Yeeun Choi et al. · Yonsei University &amp; Adobe Research</p>
-    <p class="footer-note">Project page template inspired by modern academic project pages. Built for <a href="https://choi-yeeun.github.io/MERIT">choi-yeeun.github.io/MERIT</a>.</p>
   </div>
 </footer>
 
