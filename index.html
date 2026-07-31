@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
-<link rel="stylesheet" href="static/css/style.css?v=51" />
+<link rel="stylesheet" href="static/css/style.css?v=55" />
 <script src="static/js/main.js?v=2"></script>
 </head>
 <body>
@@ -77,10 +77,7 @@
 <section id="demo">
   <div class="wrap">
     <div class="demo-video">
-      <video autoplay loop muted playsinline preload="auto">
-        <source src="static/videos/merit_teaser.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <div class="demo-placeholder">(demo)</div>
     </div>
     <p class="demo-caption">A simple yet effective agentic framework — <span style="color:var(--accent);font-weight:700">MERIT</span> — that prioritizes high-recall retrieval and defers semantic composition to inference time.</p>
   </div>
@@ -88,11 +85,11 @@
 
 <!-- ============ MOTIVATION ============ -->
 <section id="motivation" class="tinted">
-  <div class="wrap narrow reveal">
+  <div class="wrap reveal">
     <h2 class="section-title">Motivation</h2>
-    <p class="section-sub" style="max-width:none;">The bottleneck isn't memory quality — it's <span class="mark">retrieval</span>.</p>
+    <p class="section-sub" style="max-width:none;">Good retrieval doesn't need complex memory — <span class="mark">simple, raw evidence</span> is enough.</p>
 
-    <p class="lead">When a video stretches from hours to <b>days</b>, you can't feed it into an MLLM end-to-end. So the field splits the task into <b>two stages</b>: first build an <b>external memory</b> from the whole video — <em>before any question is known</em> — then, at inference time, <b>retrieve</b> from that memory to answer each query.</p>
+    <p class="lead">When a video stretches from hours to <b>days</b>, you can't feed it into an MLLM end-to-end. So the field splits the task into <b>two stages</b>: first build an <b>external memory</b> from the whole video — <em>before any question is known</em> — then, at inference time, <b>retrieve</b> from it to answer each query.</p>
 
     <figure class="fig fig-padded" style="margin:1.8rem 0;">
       <img src="static/images/fig1.png" alt="MERIT overview: previous hierarchical graph memory vs. MERIT's simple multi-key memory with temporal expansion, and performance comparison." />
@@ -116,10 +113,10 @@
 
     <div class="insight-callout">
       <span class="ic-tag">Key idea</span>
-      <p><b>Intelligence Allocation.</b> Spending your strongest MLLM on preprocessing done <em>before the task is even specified</em> is wasteful. Preserve high-fidelity episodic evidence and defer semantic composition to query time. The bottleneck then shifts from pre-building static semantics to <b>high-recall retrieval</b> that reliably surfaces the right evidence.</p>
+      <p><b><i>Intelligence Allocation.</i></b> Spending your strongest MLLM on preprocessing done <em>before the task is even specified</em> is wasteful. Preserve high-fidelity episodic evidence and defer semantic composition to query time. The bottleneck then shifts from pre-building static semantics to <b>high-recall retrieval</b> that reliably surfaces the right evidence.</p>
     </div>
 
-    <p>MERIT embraces exactly this: build a <b>simple episodic memory</b> tuned for high recall, and compose task-specific relations <b>on demand</b> at query time — through two lightweight ideas below.</p>
+    <p>MERIT turns this idea into two lightweight components: a <b>simple, high-recall episodic memory</b>, and <b>query-aware refinement</b> that composes the right evidence on demand at inference time — detailed below.</p>
   </div>
 </section>
 
@@ -223,7 +220,7 @@
     </div>
 
     <!-- Table 2 -->
-    <h3 class="table-head narrow-head reveal">Results on Hour-Long Video QA <span>(LVBench &amp; Video-MME Long)</span></h3>
+    <h3 class="table-head narrow-head reveal">Results on Hour-Long Video QA <span>(LVBench &amp; Video-MME (Long))</span></h3>
     <div class="table-card narrow-tbl reveal">
       <div class="table-scroll">
         <table class="res">
@@ -250,13 +247,14 @@
         </table>
       </div>
     </div>
-    <h3 class="eff-title reveal">A fraction of the memory-building cost</h3>
+    <h3 class="eff-title reveal">Memory Building Cost</h3>
     <p class="section-sub reveal" style="margin-top:.2rem;">Against the graph-memory SOTA (WorldMM), MERIT builds its memory once per clip instead of re-reading and consolidating across many scales.</p>
     <div class="eff-row reveal">
       <div class="eff-card"><div class="eff-num">8.4×</div><div class="eff-lbl">fewer input tokens<br><span>815K vs. 6,860K</span></div></div>
       <div class="eff-card"><div class="eff-num">8.6×</div><div class="eff-lbl">fewer output tokens<br><span>288K vs. 2,472K</span></div></div>
       <div class="eff-card"><div class="eff-num">3.8×</div><div class="eff-lbl">fewer MLLM calls<br><span>6,223 vs. 23,731</span></div></div>
     </div>
+    <p class="section-sub reveal" style="margin:1.6rem auto 0;font-size:.98rem;">For more ablations, experiments, and analysis, please refer to the paper.</p>
   </div>
 </section>
 

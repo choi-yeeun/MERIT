@@ -104,11 +104,10 @@ a:hover { color: var(--accent-2); }
 ::selection { background: #CEF7F3; color: #1c2a27; }
 ::-moz-selection { background: #CEF7F3; color: #1c2a27; }
 
-/* only allow selecting actual text, not empty padding/margins */
+/* selection: real text selects; empty backgrounds/containers do not */
 body { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
-p, h1, h2, h3, h4, h5, h6, a, span, b, i, em, strong, u, sup, sub, li,
-td, th, pre, code, figcaption, blockquote, caption,
-.num, .lbl, .delta, .cap, .badge, .tag, .brand {
+p, h1, h2, h3, h4, h5, h6, a, span, b, i, em, strong, u, sub, sup, li,
+td, th, pre, code, figcaption, blockquote, caption, button, label {
   -webkit-user-select: text; -moz-user-select: text; user-select: text;
 }
 
@@ -227,16 +226,23 @@ h1.title .merit-name {
   border-radius: 14px; border: 1px solid var(--border);
   box-shadow: var(--shadow); background: #000;
 }
+.demo-placeholder {
+  width: 100%; aspect-ratio: 16 / 9;
+  display: grid; place-items: center;
+  border-radius: 14px; border: 1px dashed var(--border);
+  background: var(--bg-alt); color: var(--text-soft);
+  font-size: 1.1rem; letter-spacing: .02em;
+}
 
 /* ---------- sections ---------- */
 section { padding: 56px 0; border-top: 1px solid var(--border); }
 section.tinted { background: var(--bg-alt); }
 #demo { border-top: none; }   /* TL;DR + Demo read as one section */
 h2.section-title {
-  text-align: center; font-size: 1.7rem; font-weight: 800; margin: 0 0 .4rem;
+  text-align: center; font-size: 2.05rem; font-weight: 800; margin: 0 0 .5rem;
   letter-spacing: -.3px;
 }
-.section-sub { text-align: center; color: var(--text-soft); margin: 0 auto 2.2rem; max-width: 60ch; }
+.section-sub { text-align: center; color: var(--text-soft); margin: 0 auto 2.2rem; max-width: 60ch; font-size: 1.12rem; }
 
 /* highlighter-pen mark (à la spatialclaw takeaway) */
 .mark {
@@ -419,8 +425,7 @@ html[data-theme="dark"] .idea.b .tag { color: #9dc0f5; }
   content: ""; width: 4px; height: 1.05em; border-radius: 2px;
   background: var(--accent); flex: 0 0 auto;
 }
-.table-head span { color: var(--accent-2); font-weight: 700; font-size: .95rem; }
-html[data-theme="dark"] .table-head span { color: var(--accent); }
+.table-head span { color: var(--accent); font-weight: 700; }
 .table-card {
   background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
   box-shadow: var(--shadow); overflow: hidden;
