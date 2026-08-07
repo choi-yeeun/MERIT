@@ -15,8 +15,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
-<link rel="stylesheet" href="static/css/style.css?v=55" />
-<script src="static/js/main.js?v=2"></script>
+<link rel="stylesheet" href="static/css/style.css?v=83" />
+<script src="static/js/main.js?v=8"></script>
 </head>
 <body>
 
@@ -55,7 +55,7 @@
     <p class="corr">† Co-corresponding authors</p>
 
     <div class="btns">
-      <a class="btn" href="#"><i class="fas fa-file-pdf"></i> Paper</a>
+      <a class="btn" href="#"><svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 144-208 0c-35.3 0-64 28.7-64 64l0 144-48 0c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128zM176 352l32 0c30.9 0 56 25.1 56 56s-25.1 56-56 56l-16 0 0 32c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-48 0-80c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24l-16 0 0 48 16 0zm96-80l32 0c26.5 0 48 21.5 48 48l0 64c0 26.5-21.5 48-48 48l-32 0c-8.8 0-16-7.2-16-16l0-128c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16l0-64c0-8.8-7.2-16-16-16l-16 0 0 96 16 0zm80-112c0-8.8 7.2-16 16-16l48 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 32 32 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-32 0 0 48c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-64 0-64z"/></svg> Paper</a>
       <a class="btn" href="#"><i class="ai ai-arxiv"></i> arXiv</a>
       <a class="btn" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg> Code</a>
       <a class="btn alt" href="#bibtex"><svg viewBox="0 0 448 512" fill="currentColor"><path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216z"/></svg> BibTeX</a>
@@ -68,7 +68,7 @@
   <div class="wrap">
     <div class="tldr-box reveal">
       <span class="tldr-tag">TL;DR</span>
-      <p>Prior ultra-long video methods pour effort into complex hierarchical or graph memory at build time — before the query is even known. <b>MERIT</b> flips this: it builds a simple episodic <b>multi-key memory</b> for high-recall retrieval, and defers query-specific reasoning to inference time via on-demand <b>neighbor filtering</b>. <em>Without building complex, high-cost memory, MERIT achieves state-of-the-art results on EgoLifeQA, LVBench, and Video-MME (Long).</em></p>
+      <p>Prior ultra-long video methods pour effort into complex hierarchical or graph memory at build time — before the query is even known. <a href="#method"><b>MERIT</b></a> flips this: it builds a simple episodic <a href="#multikey"><b>multi-key memory</b></a> for high-recall retrieval, and defers query-specific reasoning to inference time via on-demand <a href="#neighbor"><b>neighbor filtering</b></a>. <em>Without building complex, high-cost memory, MERIT achieves state-of-the-art results on EgoLifeQA, LVBench, and Video-MME (Long).</em></p>
     </div>
   </div>
 </section>
@@ -125,7 +125,7 @@
   <div class="wrap">
     <div class="reveal">
       <h2 class="section-title">Method</h2>
-      <p class="section-sub" style="max-width:none;">MERIT = <b>M</b>ulti-key <b>E</b>pisodic <b>R</b>etrieval with <b>I</b>nference-time <b>T</b>emporal expansion.</p>
+      <p class="section-sub merit-acro" style="max-width:none;"><b>MERIT</b> = <b>M</b>ulti-key <b>E</b>pisodic <b>R</b>etrieval with <b>I</b>nference-time <b>T</b>emporal expansion.</p>
       <figure class="fig fig-padded">
         <img src="static/images/fig2.png" alt="MERIT pipeline. Stage 1: episodic memory construction with four keys per 30s clip. Stage 2: agentic retrieval with key-wise max similarity and neighbor filtering." />
         <figcaption>
@@ -136,7 +136,7 @@
     </div>
 
     <!-- Method block 1 -->
-    <div class="method-block reveal">
+    <div class="method-block reveal" id="multikey">
       <span class="mb-num">1</span>
       <div class="mb-body">
         <h3><span class="mark">Multi-Key Memory</span></h3>
@@ -147,18 +147,154 @@
           <div class="key-card k-obj"><div class="ico">📦</div><h4>Object</h4><p>Items handled, requested, or moved, along with state transitions.</p></div>
           <div class="key-card k-sum"><div class="ico">📝</div><h4>Summary</h4><p>A compact keyword-style abstraction of the clip's core narrative.</p></div>
         </div>
+
+        <div class="kv-carousel">
+          <div class="kvc-viewport">
+            <div class="kvc-track" id="kvcTrack">
+
+              <!-- slide 1 -->
+              <div class="kvc-slide">
+                <div class="kvc-media">
+                  <div class="kvc-when">⏱️ DAY 2 · 11:32:30</div>
+                  <video muted loop playsinline controls preload="metadata"><source src="static/videos/clip_ex1.mp4" type="video/mp4" /></video>
+                  <div class="kvc-desc">Chatting over a meal at the dining table</div>
+                </div>
+                <div class="kvc-info">
+                  <p class="kvc-cap"><span class="kvc-caplabel">📄 Caption</span><button class="cap-toggle" onclick="capToggle(this)">Show full</button><span class="cap-text cap-short">I pick up the bowl of food and take a bite. … I reach for the cup, pick it up and take a sip, then set it down. Alice asks, “Are you going to a concert or something?” — the group chats about what's fun in Zhengzhou.</span><span class="cap-text cap-full" hidden>I pick up the bowl of food. Lucia says, “Let me try again.” I set it down, pick it up again, and take a bite. Alice says, “Hey, hey, I'm really curious about your plan.” I look at my colleagues. Tasha says, “Ah, I'm really curious too.” Tasha adds, “I want to know too.” Alice says, “I also want to know what fun stuff is there in Zhengzhou.” I glance back at the bowl. Tasha asks, “No idea, what is there to do?” I reach for the cup, then pick it up and take a sip. Katrina says, “Check out the guides made by non-locals and you'll know.” Alice says, “Exactly, hahaha.” Tasha says, “Just got a call today saying to go play in Zhengzhou.” I set the cup down. Alice asks, “Are you going to a concert or something?” I look at my colleagues. I check my phone. Tasha says, “No idea.”</span></p>
+                  <div class="kvc-keys">
+                    <div class="kv k-evt"><span class="kv-ico">🎬</span><div><b>Event</b>I pick up the bowl of food and take a bite</div></div>
+                    <div class="kv k-dial"><span class="kv-ico">💬</span><div><b>Dialogue</b>Alice asks if I'm going to a concert or something</div></div>
+                    <div class="kv k-obj"><span class="kv-ico">📦</span><div><b>Object</b>Cup is picked up and sipped from, then set down</div></div>
+                    <div class="kv k-sum"><span class="kv-ico">📝</span><div><b>Summary</b>eating, sipping while discussing Zhengzhou plans</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- slide 2 -->
+              <div class="kvc-slide">
+                <div class="kvc-media">
+                  <div class="kvc-when">⏱️ DAY 4 · 12:57:30</div>
+                  <video muted loop playsinline controls preload="metadata"><source src="static/videos/clip_ex2.mp4" type="video/mp4" /></video>
+                  <div class="kvc-desc">Sorting delivery packages at home</div>
+                </div>
+                <div class="kvc-info">
+                  <p class="kvc-cap"><span class="kvc-caplabel">📄 Caption</span><button class="cap-toggle" onclick="capToggle(this)">Show full</button><span class="cap-text cap-short">“What's this?” I ask, then identify it: “Butterfly wind chime.” … I hand the items to Katrina, who says, “This is my materials pack… doing crafts again today.” I head outside with a garbage bag, toss it into the box, pick up another package, and read the tracking number.</span><span class="cap-text cap-full" hidden>I take it out. “I don't know—let me check,” I say. “What's this?” I ask, then identify it: “Butterfly wind chime.” Lucia says, “It's mine.” “Okay,” I reply, handing the items to Katrina. Katrina says, “This is my materials pack… Doing crafts again today. Did makeup yesterday, don't feel like doing it today.” I head outside with a garbage bag, toss it into the box, pick up another package, and read the tracking number. I grab another, check the tracking again—still not it—so I set the rest aside.</span></p>
+                  <div class="kvc-keys">
+                    <div class="kv k-evt"><span class="kv-ico">🎬</span><div><b>Event</b>I head outside and toss a garbage bag into the box</div></div>
+                    <div class="kv k-dial"><span class="kv-ico">💬</span><div><b>Dialogue</b>Katrina says this is her materials pack — doing crafts again today</div></div>
+                    <div class="kv k-obj"><span class="kv-ico">📦</span><div><b>Object</b>I pick up packages and read tracking numbers, then set the rest aside</div></div>
+                    <div class="kv k-sum"><span class="kv-ico">📝</span><div><b>Summary</b>package sorting, check tracking, hand wind chime to Katrina, dispose garbage</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- slide 3 -->
+              <div class="kvc-slide">
+                <div class="kvc-media">
+                  <div class="kvc-when">⏱️ DAY 6 · 15:08:30</div>
+                  <video muted loop playsinline controls preload="metadata"><source src="static/videos/clip_ex3.mp4" type="video/mp4" /></video>
+                  <div class="kvc-desc">Charging a power bank, then heading upstairs</div>
+                </div>
+                <div class="kvc-info">
+                  <p class="kvc-cap"><span class="kvc-caplabel">📄 Caption</span><button class="cap-toggle" onclick="capToggle(this)">Show full</button><span class="cap-text cap-short">I pick up the thread, plug the cable into the power bank, and check the battery level. Alice asks, “Are you really not inviting me to your house?” I start up the stairs, steadying myself on the railing with my left hand, and take out my phone.</span><span class="cap-text cap-full" hidden>Alice says, “I don't even know where your door opens.” I hesitate and glance left. Others say, “It's better not to know.” I pick up the thread, plug the cable into the power bank, and check the battery level. Alice asks, “Are you really not inviting me to your house?” I turn right and walk toward the living room door. Katrina says, “If I invite you, I won't add any fun.” I glance left and start up the stairs, steadying myself on the railing with my left hand, and continue up. I take out my phone. Shure says, “Under the vase.” I swipe up and tap my phone. Katrina says, “Ah, under the vase.” I walk forward, glancing right. Others ask, “On the first floor?” Katrina says, “Maybe the girls found it.” I see Shure.</span></p>
+                  <div class="kvc-keys">
+                    <div class="kv k-evt"><span class="kv-ico">🎬</span><div><b>Event</b>I start up the stairs, steadying myself on the railing with my left hand</div></div>
+                    <div class="kv k-dial"><span class="kv-ico">💬</span><div><b>Dialogue</b>Alice asks: are you really not inviting me to your house?</div></div>
+                    <div class="kv k-obj"><span class="kv-ico">📦</span><div><b>Object</b>Cable is plugged into the power bank and the battery level is checked</div></div>
+                    <div class="kv k-sum"><span class="kv-ico">📝</span><div><b>Summary</b>plug power bank, check battery, walk to living room, climb stairs</div></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <button class="kvc-btn kvc-prev" onclick="kvcMove(this,-1)" aria-label="Previous example">‹</button>
+          <button class="kvc-btn kvc-next" onclick="kvcMove(this,1)" aria-label="Next example">›</button>
+          <div class="kvc-dots"></div>
+        </div>
       </div>
     </div>
 
     <!-- Method block 2 -->
-    <div class="method-block reveal">
+    <div class="method-block reveal" id="neighbor">
       <span class="mb-num">2</span>
       <div class="mb-body">
         <h3><span class="mark">Neighbor Filtering</span></h3>
         <p>The evidence needed to answer a question often spans several nearby moments, not a single 30-second clip. So when a clip is retrieved, MERIT attaches its temporally adjacent neighbors (±Δ) <b>on demand</b> — the simplest possible graph over the timeline — then uses the solver as a <b>query-aware filter</b> to distill only what's relevant. Coherent context is reconstructed at inference time, with <b>no pre-computed hierarchies</b>.</p>
         <div class="nf-steps">
-          <div class="nf-step"><span class="nf-ico">↔</span><div><b>Temporal expansion</b><p>Pull in ±Δ adjacent clips around each retrieved anchor (e.g. ±1 min).</p></div></div>
-          <div class="nf-step"><span class="nf-ico">⌕</span><div><b>Query-aware refinement</b><p>The solver filters the expanded context, keeping only query-relevant evidence.</p></div></div>
+          <div class="nf-step"><span class="nf-ico">↔️</span><div><b>Temporal expansion</b><p>Pull in ±Δ adjacent clips around each retrieved anchor<br>(e.g. ±1 min).</p></div></div>
+          <div class="nf-step"><span class="nf-ico">🔎</span><div><b>Query-aware refinement</b><p>The solver filters the expanded context, keeping only query-relevant evidence.</p></div></div>
+        </div>
+
+        <div class="kv-carousel">
+          <div class="kvc-viewport">
+            <div class="kvc-track" id="nfcTrack">
+
+              <!-- NF slide 1 -->
+              <div class="kvc-slide nfc-slide">
+                <div class="nfc-q"><b>Q.</b> While I was cleaning the egg mixer, who joined in to help?</div>
+                <ul class="nfc-choices"><li>A. Alice</li><li>B. Tasha</li><li>C. Shure</li><li>D. Lucia</li></ul>
+                <div class="nfc-meta"><b>Query time</b> | DAY1 19:37:51 &nbsp;·&nbsp; <b>Target time</b> | DAY1 14:01:00–14:01:30</div>
+                <div class="nfc-strip">
+                  <figure class="nfc-clip nfc-nb"><video muted loop playsinline preload="metadata"><source src="static/videos/nf_ex1_1.mp4" type="video/mp4" /></video><figcaption>DAY1 14:00:00<br><span>± neighbor</span></figcaption></figure>
+                  <span class="nfc-plus">+</span>
+                  <figure class="nfc-clip is-anchor"><video muted loop playsinline preload="metadata"><source src="static/videos/nf_ex1_2.mp4" type="video/mp4" /></video><figcaption>DAY1 14:00:30<br><span>retrieved</span></figcaption></figure>
+                  <span class="nfc-plus">+</span>
+                  <figure class="nfc-clip nfc-nb is-answer"><video muted loop playsinline preload="metadata"><source src="static/videos/nf_ex1_3.mp4" type="video/mp4" /></video><figcaption>DAY1 14:01:00<br><span>✓ answer here</span></figcaption></figure>
+                </div>
+                <button class="nfc-expand" onclick="nfExpand(this)">＋ Expand ±Δ neighbors</button>
+                <div class="nfc-reveal">
+                  <div class="nfc-window">the retrieved clip alone misses it — a ±Δ neighbor holds the answer</div>
+                  <div class="nfc-filter"><span class="nfc-flabel">🔎 Filtered evidence</span>I hand the egg beater to Shure, who operates it to show me how — <b>Shure joined in to help.</b></div>
+                  <div class="nfc-answer"><span class="nfc-alabel">Answer</span>C. Shure</div>
+                </div>
+              </div>
+
+              <!-- NF slide 2 -->
+              <div class="kvc-slide nfc-slide">
+                <div class="nfc-q"><b>Q.</b> While puzzling, who am I guiding to use the app on the phone?</div>
+                <ul class="nfc-choices"><li>A. Lucia, Shure</li><li>B. Katrina, Alice</li><li>C. Shure, Tasha</li><li>D. Alice, Shure</li></ul>
+                <div class="nfc-meta"><b>Query time</b> | DAY1 12:46:46 &nbsp;·&nbsp; <b>Target time</b> | DAY1 12:31:53–12:32:03</div>
+                <div class="nfc-strip">
+                  <figure class="nfc-clip is-anchor"><video muted loop playsinline preload="metadata"><source src="static/videos/nf_ex2_1.mp4" type="video/mp4" /></video><figcaption>DAY1 12:30:30<br><span>retrieved</span></figcaption></figure>
+                  <span class="nfc-plus">+</span>
+                  <figure class="nfc-clip nfc-nb"><video muted loop playsinline preload="metadata"><source src="static/videos/nf_ex2_2.mp4" type="video/mp4" /></video><figcaption>DAY1 12:31:00<br><span>± neighbor</span></figcaption></figure>
+                  <span class="nfc-plus">+</span>
+                  <figure class="nfc-clip nfc-nb is-answer"><video muted loop playsinline preload="metadata"><source src="static/videos/nf_ex2_3.mp4" type="video/mp4" /></video><figcaption>DAY1 12:31:30<br><span>✓ answer here</span></figcaption></figure>
+                </div>
+                <button class="nfc-expand" onclick="nfExpand(this)">＋ Expand ±Δ neighbors</button>
+                <div class="nfc-reveal">
+                  <div class="nfc-window">the retrieved clip alone misses it — a ±Δ neighbor holds the answer</div>
+                  <div class="nfc-filter"><span class="nfc-flabel">🔎 Filtered evidence</span>I check Katrina's app on her phone, then take Alice's phone to look — <b>I'm guiding Katrina and Alice.</b></div>
+                  <div class="nfc-answer"><span class="nfc-alabel">Answer</span>B. Katrina, Alice</div>
+                </div>
+              </div>
+
+              <!-- NF slide 3 -->
+              <div class="kvc-slide nfc-slide">
+                <div class="nfc-q"><b>Q.</b> Who joined in while me and Shure were setting up the shelf?</div>
+                <ul class="nfc-choices"><li>A. Tasha</li><li>B. Katrina</li><li>C. Lucia</li><li>D. Alice</li></ul>
+                <div class="nfc-meta"><b>Query time</b> | DAY1 19:40:55 &nbsp;·&nbsp; <b>Target time</b> | DAY1 12:54:00–12:54:30</div>
+                <div class="nfc-strip">
+                  <figure class="nfc-clip nfc-nb"><video muted loop playsinline preload="metadata"><source src="static/videos/nf_ex3_1.mp4" type="video/mp4" /></video><figcaption>DAY1 12:53:30<br><span>± neighbor</span></figcaption></figure>
+                  <span class="nfc-plus">+</span>
+                  <figure class="nfc-clip is-anchor"><video muted loop playsinline preload="metadata"><source src="static/videos/nf_ex3_2.mp4" type="video/mp4" /></video><figcaption>DAY1 12:54:00<br><span>retrieved</span></figcaption></figure>
+                  <span class="nfc-plus">+</span>
+                  <figure class="nfc-clip nfc-nb is-answer"><video muted loop playsinline preload="metadata"><source src="static/videos/nf_ex3_3.mp4" type="video/mp4" /></video><figcaption>DAY1 12:54:30<br><span>✓ answer here</span></figcaption></figure>
+                </div>
+                <button class="nfc-expand" onclick="nfExpand(this)">＋ Expand ±Δ neighbors</button>
+                <div class="nfc-reveal">
+                  <div class="nfc-window">the retrieved clip alone misses it — a ±Δ neighbor holds the answer</div>
+                  <div class="nfc-filter"><span class="nfc-flabel">🔎 Filtered evidence</span>As the shelf is set up, Katrina joins in and operates it with us — <b>Katrina joined in too.</b></div>
+                  <div class="nfc-answer"><span class="nfc-alabel">Answer</span>B. Katrina</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <button class="kvc-btn kvc-prev" onclick="kvcMove(this,-1)" aria-label="Previous example">‹</button>
+          <button class="kvc-btn kvc-next" onclick="kvcMove(this,1)" aria-label="Next example">›</button>
+          <div class="kvc-dots"></div>
         </div>
       </div>
     </div>
@@ -254,7 +390,7 @@
       <div class="eff-card"><div class="eff-num">8.6×</div><div class="eff-lbl">fewer output tokens<br><span>288K vs. 2,472K</span></div></div>
       <div class="eff-card"><div class="eff-num">3.8×</div><div class="eff-lbl">fewer MLLM calls<br><span>6,223 vs. 23,731</span></div></div>
     </div>
-    <p class="section-sub reveal" style="margin:1.6rem auto 0;font-size:.98rem;">For more ablations, experiments, and analysis, please refer to the paper.</p>
+    <p class="section-sub reveal" style="margin:1.6rem auto 0;font-size:.98rem;">For more ablations and analysis, please refer to the paper.</p>
   </div>
 </section>
 

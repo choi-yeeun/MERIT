@@ -39,3 +39,87 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 });
+
+// ---- caption expand/collapse ----
+window.capToggle = function (btn) {
+  const cap = btn.closest(".kvc-cap");
+  if (!cap) return;
+  const s = cap.querySelector(".cap-short");
+  const f = cap.querySelector(".cap-full");
+  const showFull = f.hidden;
+  f.hidden = !showFull;
+  s.hidden = showFull;
+  btn.textContent = showFull ? "Show less" : "Show full";
+};
+
+// ---- neighbor-filtering expand/collapse (staged reveal) ----
+window.nfExpand = function (btn) {
+  const slide = btn.closest(".nfc-slide");
+  if (!slide) return;
+  const expanded = slide.classList.toggle("nf-expanded");
+  btn.textContent = expanded ? "− Collapse" : "＋ Expand ±Δ neighbors";
+  if (expanded) {
+    slide.querySelectorAll("video").forEach((v) => {
+      const p = v.play();
+      if (p && p.catch) p.catch(() => {});
+    });
+  }
+};
+
+// ---- carousels (multi-instance: multi-key + neighbor filtering) ----
+(function () {
+  const state = new Map(); // carousel element -> current index
+  function render(car) {
+    const track = car.querySelector(".kvc-track");
+    if (!track) return;
+    const idx = state.get(car) || 0;
+    track.style.transform = `translateX(-${idx * 100}%)`;
+    car.querySelectorAll(".kvc-dot").forEach((d, i) =>
+      d.classList.toggle("active", i === idx)
+    );
+    const slides = track.children;
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].querySelectorAll("video").forEach((v) => {
+        // play only visible videos in the active slide; pause everything else
+        if (i === idx && v.offsetParent !== null) {
+          const p = v.play();
+          if (p && p.catch) p.catch(() => {});
+        } else {
+          v.pause();
+        }
+      });
+    }
+  }
+  function goTo(car, i) {
+    const n = car.querySelector(".kvc-track").children.length;
+    state.set(car, ((i % n) + n) % n);
+    // collapse any expanded neighbor-filtering slides when navigating
+    car.querySelectorAll(".nfc-slide.nf-expanded").forEach((s) => {
+      s.classList.remove("nf-expanded");
+      const b = s.querySelector(".nfc-expand");
+      if (b) b.textContent = "＋ Expand ±Δ neighbors";
+    });
+    render(car);
+  }
+  window.kvcMove = function (btn, dir) {
+    const car = btn.closest(".kv-carousel");
+    if (car) goTo(car, (state.get(car) || 0) + dir);
+  };
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".kv-carousel").forEach((car) => {
+      const track = car.querySelector(".kvc-track");
+      const dots = car.querySelector(".kvc-dots");
+      if (!track || !dots) return;
+      state.set(car, 0);
+      const n = track.children.length;
+      for (let i = 0; i < n; i++) {
+        const b = document.createElement("button");
+        b.className = "kvc-dot" + (i === 0 ? " active" : "");
+        b.setAttribute("aria-label", "Example " + (i + 1));
+        b.onclick = () => goTo(car, i);
+        dots.appendChild(b);
+      }
+      render(car);
+    });
+  });
+})();
