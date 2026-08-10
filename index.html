@@ -15,8 +15,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
-<link rel="stylesheet" href="static/css/style.css?v=83" />
-<script src="static/js/main.js?v=8"></script>
+<link rel="stylesheet" href="static/css/style.css?v=106" />
+<script src="static/js/main.js?v=10"></script>
 </head>
 <body>
 
@@ -321,9 +321,97 @@
       </div>
     </div>
 
-    <!-- Table 1 -->
+    <!-- Chart 1: EgoLifeQA Avg, by backbone (tabbed) -->
     <h3 class="table-head reveal">Results on Ultra-Long Video QA <span>(EgoLifeQA)</span></h3>
-    <div class="table-card reveal">
+    <div class="ego-duo reveal">
+    <div class="ego-col">
+    <div class="ego-subtitle">Average accuracy · by backbone</div>
+    <div class="chart vbar-chart">
+      <div class="bb-tabs"><span class="bb-tabs-label">Backbone</span>
+        <button class="bb-tab is-active" onclick="bbTab(this,'gpt5')">GPT-5</button>
+        <button class="bb-tab" onclick="bbTab(this,'gemini')">Gemini</button>
+        <button class="bb-tab" onclick="bbTab(this,'qwen')">Qwen</button>
+      </div>
+      <div class="chart-legend">
+        <span><i style="background:#b7c3be"></i> Uniform</span>
+        <span><i style="background:var(--hier)"></i> Hierarchical</span>
+        <span><i style="background:var(--worldmm)"></i> Graph</span>
+        <span><i style="background:var(--accent)"></i> Ours</span>
+      </div>
+      <div class="bb-panel" data-bb="gpt5">
+        <div class="vbars">
+          <div class="vbar" style="--h:41.3%"><span class="vb-val">48.6</span><div class="vb-col is-uniform"></div><span class="vb-name">GPT-5</span></div>
+          <div class="vbar" style="--h:48.9%"><span class="vb-val">52.0</span><div class="vb-col is-hier"></div><span class="vb-name">EgoRAG</span></div>
+          <div class="vbar" style="--h:79.1%"><span class="vb-val">65.6</span><div class="vb-col is-graph"></div><span class="vb-name">WorldMM</span></div>
+          <div class="vbar vbar-merit" style="--h:91.6%"><span class="vb-val">71.2</span><div class="vb-col is-merit"></div><span class="vb-name">MERIT</span></div>
+        </div>
+      </div>
+      <div class="bb-panel" data-bb="gemini" hidden>
+        <div class="vbars">
+          <div class="vbar" style="--h:36.4%"><span class="vb-val">46.4</span><div class="vb-col is-uniform"></div><span class="vb-name">Gemini</span></div>
+          <div class="vbar" style="--h:61.1%"><span class="vb-val">57.5</span><div class="vb-col is-graph"></div><span class="vb-name">EGAgent</span></div>
+          <div class="vbar vbar-merit" style="--h:76.0%"><span class="vb-val">64.2</span><div class="vb-col is-merit"></div><span class="vb-name">MERIT</span></div>
+        </div>
+      </div>
+      <div class="bb-panel" data-bb="qwen" hidden>
+        <div class="vbars">
+          <div class="vbar" style="--h:19.1%"><span class="vb-val">38.6</span><div class="vb-col is-uniform"></div><span class="vb-name">Qwen</span></div>
+          <div class="vbar" style="--h:58.7%"><span class="vb-val">56.4</span><div class="vb-col is-graph"></div><span class="vb-name">WorldMM</span></div>
+          <div class="vbar vbar-merit" style="--h:53.8%"><span class="vb-val">54.2</span><div class="vb-col is-merit"></div><span class="vb-name">MERIT</span></div>
+        </div>
+      </div>
+      <p class="chart-note">Average accuracy (%) — best of each type, within the same backbone.</p>
+    </div>
+    </div>
+
+    <!-- Chart 1b: per-QA-type (GPT-5 backbone) -->
+    <div class="ego-col">
+    <div class="ego-subtitle">By QA type · GPT-5 backbone</div>
+    <div class="chart radar-chart">
+      <div class="chart-legend">
+        <span><i style="background:#b7c3be"></i> Uniform</span>
+        <span><i style="background:var(--hier)"></i> Hierarchical (EgoRAG)</span>
+        <span><i style="background:var(--worldmm)"></i> Graph (WorldMM)</span>
+        <span><i style="background:var(--accent)"></i> MERIT</span>
+      </div>
+      <div class="radar-wrap">
+        <svg class="radar" viewBox="0 0 340 300" role="img" aria-label="Per-QA-type accuracy radar">
+          <!-- grid -->
+          <polygon class="rg-grid" points="170.0,130.0 196.6,149.3 186.5,180.7 153.5,180.7 143.4,149.3" />
+          <polygon class="rg-grid" points="170.0,102.0 223.3,140.7 202.9,203.3 137.1,203.3 116.7,140.7" />
+          <polygon class="rg-grid" points="170.0,74.0 249.9,132.0 219.4,226.0 120.6,226.0 90.1,132.0" />
+          <polygon class="rg-grid" points="170.0,46.0 276.5,123.4 235.8,248.6 104.2,248.6 63.5,123.4" />
+          <!-- axes -->
+          <line class="rg-axis" x1="170" y1="158" x2="170.0" y2="46.0" />
+          <text class="rg-alabel" x="170.0" y="27.8" text-anchor="middle" dy="-0.2em">EntityLog</text>
+          <line class="rg-axis" x1="170" y1="158" x2="276.5" y2="123.4" />
+          <text class="rg-alabel" x="293.8" y="117.8" text-anchor="start" dy="-0.2em">EventRecall</text>
+          <line class="rg-axis" x1="170" y1="158" x2="235.8" y2="248.6" />
+          <text class="rg-alabel" x="246.5" y="263.3" text-anchor="start" dy="0.9em">HabitInsight</text>
+          <line class="rg-axis" x1="170" y1="158" x2="104.2" y2="248.6" />
+          <text class="rg-alabel" x="93.5" y="263.3" text-anchor="end" dy="0.9em">RelationMap</text>
+          <line class="rg-axis" x1="170" y1="158" x2="63.5" y2="123.4" />
+          <text class="rg-alabel" x="46.2" y="117.8" text-anchor="end" dy="-0.2em">TaskMaster</text>
+          <!-- series -->
+          <polygon class="rg-uniform" points="170.0,91.9 226.1,139.8 209.1,211.8 125.9,218.7 96.0,133.9" />
+          <circle class="rg-uniform-dot" cx="170.0" cy="91.9" r="3" /><circle class="rg-uniform-dot" cx="226.1" cy="139.8" r="3" /><circle class="rg-uniform-dot" cx="209.1" cy="211.8" r="3" /><circle class="rg-uniform-dot" cx="125.9" cy="218.7" r="3" /><circle class="rg-uniform-dot" cx="96.0" cy="133.9" r="3" />
+          <polygon class="rg-hier" points="170.0,102.0 245.0,133.6 221.3,228.6 125.2,219.6 100.2,135.3" />
+          <circle class="rg-hier-dot" cx="170.0" cy="102.0" r="3" /><circle class="rg-hier-dot" cx="245.0" cy="133.6" r="3" /><circle class="rg-hier-dot" cx="221.3" cy="228.6" r="3" /><circle class="rg-hier-dot" cx="125.2" cy="219.6" r="3" /><circle class="rg-hier-dot" cx="100.2" cy="135.3" r="3" />
+          <polygon class="rg-worldmm" points="170.0,70.6 255.6,130.2 232.0,243.4 118.7,228.7 74.9,127.1" />
+          <circle class="rg-worldmm-dot" cx="170.0" cy="70.6" r="3" /><circle class="rg-worldmm-dot" cx="255.6" cy="130.2" r="3" /><circle class="rg-worldmm-dot" cx="232.0" cy="243.4" r="3" /><circle class="rg-worldmm-dot" cx="118.7" cy="228.7" r="3" /><circle class="rg-worldmm-dot" cx="74.9" cy="127.1" r="3" />
+          <polygon class="rg-merit" points="170.0,63.9 264.0,127.5 230.7,241.6 108.8,242.3 74.9,127.1" />
+          <circle class="rg-merit-dot" cx="170.0" cy="63.9" r="3.4" /><circle class="rg-merit-dot" cx="264.0" cy="127.5" r="3.4" /><circle class="rg-merit-dot" cx="230.7" cy="241.6" r="3.4" /><circle class="rg-merit-dot" cx="108.8" cy="242.3" r="3.4" /><circle class="rg-merit-dot" cx="74.9" cy="127.1" r="3.4" />
+        </svg>
+      </div>
+      <p class="chart-note">Per-QA-type accuracy (%) on the GPT-5 backbone (axes 0–80).</p>
+    </div>
+    </div>
+    </div>
+
+    <!-- Table 1 (full, collapsible) -->
+    <details class="full-table reveal">
+      <summary>Show full EgoLifeQA table</summary>
+      <div class="table-card">
       <div class="table-scroll">
         <table class="res">
           <thead>
@@ -353,11 +441,27 @@
           </tbody>
         </table>
       </div>
+      </div>
+    </details>
+
+    <!-- Chart 2 -->
+    <h3 class="table-head chart-sep reveal">Results on Hour-Long Video QA <span>(LVBench &amp; Video-MME (Long))</span></h3>
+    <div class="chart chart-hl reveal">
+      <div class="cg-label">LVBench &nbsp;<span class="cg-sub">· GPT-5 backbone</span></div>
+      <div class="bar-row is-merit"><span class="bar-name">MERIT</span><div class="bar-track"><div class="bar-fill" style="--w:72.7%"></div></div><span class="bar-val">71.8</span></div>
+      <div class="bar-row is-sota"><span class="bar-name">WorldMM</span><div class="bar-track"><div class="bar-fill" style="--w:39.7%"></div></div><span class="bar-val">61.9</span></div>
+      <div class="bar-row is-uniform"><span class="bar-name">Uniform</span><div class="bar-track"><div class="bar-fill" style="--w:34.7%"></div></div><span class="bar-val">60.4</span></div>
+      <div class="cg-label">Video-MME (Long) &nbsp;<span class="cg-sub">· GPT-5 backbone</span></div>
+      <div class="bar-row is-merit"><span class="bar-name">MERIT</span><div class="bar-track"><div class="bar-fill" style="--w:92.3%"></div></div><span class="bar-val">77.7</span></div>
+      <div class="bar-row is-sota"><span class="bar-name">WorldMM</span><div class="bar-track"><div class="bar-fill" style="--w:88.7%"></div></div><span class="bar-val">76.6</span></div>
+      <div class="bar-row is-uniform"><span class="bar-name">Uniform</span><div class="bar-track"><div class="bar-fill" style="--w:81.0%"></div></div><span class="bar-val">74.3</span></div>
+      <p class="chart-note nowrap-note">Accuracy (%), axis starts at 50 · the longer the video, the larger MERIT's lead.</p>
     </div>
 
-    <!-- Table 2 -->
-    <h3 class="table-head narrow-head reveal">Results on Hour-Long Video QA <span>(LVBench &amp; Video-MME (Long))</span></h3>
-    <div class="table-card narrow-tbl reveal">
+    <!-- Table 2 (full, collapsible) -->
+    <details class="full-table reveal">
+      <summary>Show full LVBench &amp; Video-MME (Long) table</summary>
+      <div class="table-card narrow-tbl">
       <div class="table-scroll">
         <table class="res">
           <thead><tr><th>Model</th><th>LVBench</th><th>Video-MME (L)</th></tr></thead>
@@ -382,8 +486,9 @@
           </tbody>
         </table>
       </div>
-    </div>
-    <h3 class="eff-title reveal">Memory Building Cost</h3>
+      </div>
+    </details>
+    <h3 class="eff-title chart-sep reveal">Memory Building Cost</h3>
     <p class="section-sub reveal" style="margin-top:.2rem;">Against the graph-memory SOTA (WorldMM), MERIT builds its memory once per clip instead of re-reading and consolidating across many scales.</p>
     <div class="eff-row reveal">
       <div class="eff-card"><div class="eff-num">8.4×</div><div class="eff-lbl">fewer input tokens<br><span>815K vs. 6,860K</span></div></div>

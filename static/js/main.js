@@ -38,6 +38,20 @@ document.addEventListener("DOMContentLoaded", () => {
     { threshold: 0.12 }
   );
   document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+  // charts draw in when scrolled into view
+  const cio = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in-view");
+          cio.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+  document.querySelectorAll(".chart").forEach((el) => cio.observe(el));
 });
 
 // ---- caption expand/collapse ----
@@ -50,6 +64,16 @@ window.capToggle = function (btn) {
   f.hidden = !showFull;
   s.hidden = showFull;
   btn.textContent = showFull ? "Show less" : "Show full";
+};
+
+// ---- backbone tabs (EgoLifeQA chart) ----
+window.bbTab = function (btn, key) {
+  const chart = btn.closest(".chart");
+  if (!chart) return;
+  chart.querySelectorAll(".bb-tab").forEach((t) => t.classList.toggle("is-active", t === btn));
+  chart.querySelectorAll(".bb-panel").forEach((p) => {
+    p.hidden = p.dataset.bb !== key;
+  });
 };
 
 // ---- neighbor-filtering expand/collapse (staged reveal) ----
