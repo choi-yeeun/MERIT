@@ -45,6 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
           e.target.classList.add("in-view");
+          // vertical bar chart: reveal the value labels after bars finish growing
+          if (e.target.classList.contains("vbar-chart")) {
+            const active = e.target.querySelector(".bb-panel:not([hidden])");
+            if (active) setTimeout(() => active.classList.add("vals-in"), 550);
+          }
           cio.unobserve(e.target);
         }
       });
@@ -66,7 +71,7 @@ window.capToggle = function (btn) {
   btn.textContent = showFull ? "Show less" : "Show full";
 };
 
-// ---- backbone tabs (EgoLifeQA chart) ----
+// ---- backbone tabs (EgoLifeQA chart) — re-animate bars on switch ----
 window.bbTab = function (btn, key) {
   const chart = btn.closest(".chart");
   if (!chart) return;
@@ -74,14 +79,81 @@ window.bbTab = function (btn, key) {
   chart.querySelectorAll(".bb-panel").forEach((p) => {
     p.hidden = p.dataset.bb !== key;
   });
+  // replay the grow-up animation for the now-visible panel, then show values
+  chart.querySelectorAll(".bb-panel").forEach((p) => p.classList.remove("vals-in"));
+  const active = chart.querySelector('.bb-panel[data-bb="' + key + '"]');
+  if (active) {
+    active.querySelectorAll(".vb-col").forEach((c) => {
+      c.style.transition = "none";
+      c.style.height = "0";
+      void c.offsetHeight; // force reflow, then restore so it animates up
+      c.style.transition = "";
+      c.style.height = "";
+    });
+    setTimeout(() => active.classList.add("vals-in"), 550);
+  }
 };
+
+// ---- radar: click an axis to spotlight that vertex + print values on the graph ----
+document.addEventListener("DOMContentLoaded", () => {
+  const SVGNS = "http://www.w3.org/2000/svg";
+  const CX = 170, CY = 158, R = 112, MAX = 80;
+  const SERIES = [
+    { k: "merit", v: [67.2, 70.6, 73.8, 74.4, 71.4], r0: "3.4" },
+    { k: "worldmm", v: [62.4, 64.3, 75.4, 62.4, 71.4], r0: "3" },
+    { k: "hier", v: [40.0, 56.3, 62.3, 54.4, 52.4], r0: "3" },
+    { k: "uniform", v: [47.2, 42.1, 47.5, 53.6, 55.6], r0: "3" },
+  ];
+  const ang = (i) => (-90 + 72 * i) * Math.PI / 180;
+  const pt = (i, v) => [CX + (v / MAX * R) * Math.cos(ang(i)), CY + (v / MAX * R) * Math.sin(ang(i))];
+  const perp = (i) => [-Math.sin(ang(i)), Math.cos(ang(i))];
+  document.querySelectorAll(".radar-chart").forEach((chart) => {
+    const svg = chart.querySelector(".radar");
+    const labels = svg.querySelectorAll(".rg-alabel");
+    const axes = svg.querySelectorAll(".rg-axis");
+    function clear() {
+      labels.forEach((l) => l.classList.remove("rg-alabel-active"));
+      axes.forEach((a) => a.classList.remove("rg-axis-active"));
+      svg.querySelectorAll(".rg-vtxt").forEach((t) => t.remove());
+      SERIES.forEach((s) => svg.querySelectorAll("." + s.k + "-dot").forEach((d) => d.setAttribute("r", s.r0)));
+    }
+    function show(i) {
+      clear();
+      labels[i].classList.add("rg-alabel-active");
+      if (axes[i]) axes[i].classList.add("rg-axis-active");
+      const [px, py] = perp(i);
+      const max = Math.max.apply(null, SERIES.map((s) => s.v[i]));
+      const order = SERIES.map((s, si) => ({ si, val: s.v[i] })).sort((a, b) => b.val - a.val);
+      order.forEach((o, rank) => {
+        const s = SERIES[o.si];
+        const dots = svg.querySelectorAll("." + s.k + "-dot");
+        if (dots[i]) dots[i].setAttribute("r", "5");
+        const [x, y] = pt(i, s.v[i]);
+        const side = rank % 2 === 0 ? 1 : -1;
+        const off = 11 + Math.floor(rank / 2) * 3;
+        const t = document.createElementNS(SVGNS, "text");
+        t.setAttribute("x", (x + px * off * side).toFixed(1));
+        t.setAttribute("y", (y + py * off * side).toFixed(1));
+        t.setAttribute("text-anchor", "middle");
+        t.setAttribute("dominant-baseline", "middle");
+        t.setAttribute("class", "rg-vtxt rg-" + s.k + "-vtxt" + (s.v[i] === max ? " rg-best" : ""));
+        t.textContent = s.v[i].toFixed(1);
+        svg.appendChild(t);
+      });
+    }
+    labels.forEach((l, i) => {
+      l.addEventListener("mouseenter", () => show(i));
+      l.addEventListener("mouseleave", clear);
+    });
+  });
+});
 
 // ---- neighbor-filtering expand/collapse (staged reveal) ----
 window.nfExpand = function (btn) {
   const slide = btn.closest(".nfc-slide");
   if (!slide) return;
   const expanded = slide.classList.toggle("nf-expanded");
-  btn.textContent = expanded ? "− Collapse" : "＋ Expand ±Δ neighbors";
+  btn.textContent = expanded ? "− Collapse" : "＋ Expand Neighbor Clips";
   if (expanded) {
     slide.querySelectorAll("video").forEach((v) => {
       const p = v.play();

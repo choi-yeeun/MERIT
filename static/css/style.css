@@ -451,7 +451,7 @@ html[data-theme="dark"] .kv.k-obj b, html[data-theme="dark"] .kv.k-sum b { color
 .kvc-slide.nfc-slide { display: block; }
 .nfc-q { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .5rem; line-height: 1.45; }
 .nfc-q b { color: var(--accent); margin-right: .15rem; }
-.nfc-choices { list-style: none; padding: 0; margin: 0 0 .7rem; display: flex; flex-wrap: wrap; gap: .2rem 1.3rem; }
+.nfc-choices { list-style: none; padding: 0 0 0 1.5em; margin: 0 0 .7rem; display: flex; flex-wrap: wrap; gap: .2rem 1.3rem; }
 .nfc-choices li { font-size: .84rem; color: var(--text-soft); }
 .nfc-meta { font-size: .78rem; color: var(--text-soft); margin-bottom: 1rem; }
 .nfc-meta b { color: var(--accent); font-weight: 700; }
@@ -626,9 +626,10 @@ html[data-theme="dark"] .bar-row.is-merit .bar-name, html[data-theme="dark"] .ba
 .vbars { display: flex; align-items: flex-end; justify-content: center; gap: 1.5rem; height: 200px; margin: 1.4rem 0 2rem; }
 .vbar { position: relative; width: 48px; height: 100%; }
 .vb-col { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 42px; border-radius: 7px 7px 0 0; height: var(--h); }
-.chart .vb-col { height: 0; transition: height 1s cubic-bezier(.4,0,.2,1); }
+.chart .vb-col { height: 0; transition: height .55s cubic-bezier(.4,0,.2,1); }
 .chart.in-view .vb-col { height: var(--h); }
-.vb-val { position: absolute; left: 0; right: 0; bottom: var(--h); text-align: center; transform: translateY(-3px); font-size: .82rem; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+.vb-val { position: absolute; left: 0; right: 0; bottom: var(--h); text-align: center; transform: translateY(-3px); font-size: .82rem; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; opacity: 0; transition: opacity .35s ease; }
+.bb-panel.vals-in .vb-val { opacity: 1; }
 .vb-name { position: absolute; left: -6px; right: -6px; top: calc(100% + 7px); text-align: center; font-size: .76rem; color: var(--text-soft); white-space: nowrap; }
 .axnote { color: var(--text-soft); font-size: .74rem; }
 .vb-col.is-uniform { background: #b7c3be; }
@@ -657,8 +658,22 @@ html[data-theme="dark"] .db-val.v-merit { color: var(--accent); }
 .db-axis { display: flex; justify-content: space-between; margin: .2rem 0 0 calc(118px + .9rem); font-size: .68rem; color: var(--text-soft); }
 
 /* radar chart (per-QA-type) */
-.radar-wrap { max-width: 430px; margin: 0 auto; }
+.radar-wrap { max-width: none; margin: 2.2rem auto 0; }
 .radar { width: 100%; height: auto; overflow: visible; }
+.rg-alabel { cursor: pointer; transition: fill .2s ease; }
+.rg-alabel:hover { fill: var(--accent); }
+.rg-alabel-active { fill: var(--accent-2); font-size: 15px; }
+html[data-theme="dark"] .rg-alabel-active { fill: var(--accent); }
+/* on-graph value labels shown when a vertex is focused */
+.rg-vtxt { font-size: 10px; font-weight: 700; paint-order: stroke; stroke: var(--surface); stroke-width: 3px; stroke-linejoin: round; }
+.rg-vtxt.rg-best { font-size: 12px; font-weight: 800; }
+.rg-merit-vtxt  { fill: var(--accent-2); }
+html[data-theme="dark"] .rg-merit-vtxt { fill: var(--accent); }
+.rg-worldmm-vtxt { fill: #b9821a; }
+.rg-hier-vtxt    { fill: #d95f78; }
+.rg-uniform-vtxt { fill: #6f7a75; }
+.rg-axis-active { stroke: var(--accent-2); stroke-width: 2; }
+html[data-theme="dark"] .rg-axis-active { stroke: var(--accent); }
 .rg-grid { fill: none; stroke: var(--border); }
 .rg-axis { stroke: var(--border); }
 .rg-alabel { font-size: 14px; font-weight: 700; fill: var(--text-soft); }
