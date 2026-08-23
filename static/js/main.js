@@ -148,6 +148,89 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// ---- custom video player (mint progress bar) ----
+document.addEventListener("DOMContentLoaded", () => {
+  const fmt = (s) => {
+    if (!isFinite(s)) return "0:00";
+    const m = Math.floor(s / 60), ss = Math.floor(s % 60);
+    return m + ":" + (ss < 10 ? "0" : "") + ss;
+  };
+  document.querySelectorAll(".vplayer").forEach((p) => {
+    const v = p.querySelector("video");
+    const fill = p.querySelector(".vp-prog-fill");
+    const prog = p.querySelector(".vp-prog");
+    const time = p.querySelector(".vp-time");
+    if (!v) return;
+
+    const toggle = () => { v.paused ? v.play() : v.pause(); };
+    p.querySelectorAll(".vp-big, .vp-toggle").forEach((b) =>
+      b.addEventListener("click", (e) => { e.stopPropagation(); toggle(); })
+    );
+    v.addEventListener("play", () => p.classList.remove("paused"));
+    v.addEventListener("pause", () => p.classList.add("paused"));
+    p.classList.toggle("paused", v.paused);
+
+    const speedWrap = p.querySelector(".vp-speed");
+    if (speedWrap) {
+      const sbtn = speedWrap.querySelector(".vp-speed-btn");
+      const menu = speedWrap.querySelector(".vp-speed-menu");
+      const close = () => {
+        speedWrap.classList.remove("open");
+        menu.hidden = true;
+        sbtn.setAttribute("aria-expanded", "false");
+      };
+      sbtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const open = !speedWrap.classList.contains("open");
+        speedWrap.classList.toggle("open", open);
+        menu.hidden = !open;
+        sbtn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      menu.querySelectorAll("li").forEach((li) => {
+        li.addEventListener("click", (e) => {
+          e.stopPropagation();
+          v.playbackRate = parseFloat(li.dataset.rate);
+          sbtn.textContent = li.textContent;
+          menu.querySelectorAll("li").forEach((x) => x.classList.toggle("active", x === li));
+          close();
+        });
+      });
+      document.addEventListener("click", () => { if (speedWrap.classList.contains("open")) close(); });
+    }
+
+    v.addEventListener("timeupdate", () => {
+      const d = v.duration || 0;
+      if (d) fill.style.width = (v.currentTime / d) * 100 + "%";
+      time.textContent = fmt(v.currentTime) + " / " + fmt(d);
+    });
+    v.addEventListener("loadedmetadata", () => {
+      time.textContent = "0:00 / " + fmt(v.duration);
+    });
+
+    // click-to-seek + drag scrub (mouse & touch via pointer events)
+    let dragging = false;
+    const seekTo = (clientX) => {
+      const r = prog.getBoundingClientRect();
+      const x = (clientX - r.left) / r.width;
+      if (v.duration) v.currentTime = Math.max(0, Math.min(1, x)) * v.duration;
+    };
+    prog.addEventListener("pointerdown", (e) => {
+      e.preventDefault(); e.stopPropagation();
+      dragging = true;
+      try { prog.setPointerCapture(e.pointerId); } catch (_) {}
+      seekTo(e.clientX);
+    });
+    prog.addEventListener("pointermove", (e) => { if (dragging) seekTo(e.clientX); });
+    const endDrag = (e) => {
+      if (!dragging) return;
+      dragging = false;
+      try { prog.releasePointerCapture(e.pointerId); } catch (_) {}
+    };
+    prog.addEventListener("pointerup", endDrag);
+    prog.addEventListener("pointercancel", endDrag);
+  });
+});
+
 // ---- neighbor-filtering expand/collapse (staged reveal) ----
 window.nfExpand = function (btn) {
   const slide = btn.closest(".nfc-slide");

@@ -23,8 +23,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
-<link rel="stylesheet" href="static/css/style.css?v=114" />
-<script src="static/js/main.js?v=18"></script>
+<link rel="stylesheet" href="static/css/style.css?v=118" />
+<script src="static/js/main.js?v=22"></script>
 </head>
 <body>
 
@@ -85,7 +85,27 @@
 <section id="demo">
   <div class="wrap">
     <div class="demo-video">
-      <div class="demo-placeholder">(demo)</div>
+      <div class="vplayer paused" id="demoPlayer">
+        <video id="demoVid" autoplay muted loop playsinline preload="metadata">
+          <source src="static/videos/MERIT_Demo_Video_2_web.mp4" type="video/mp4" />
+        </video>
+        <button class="vp-big" type="button" aria-label="Play or pause"><svg viewBox="0 0 24 24" fill="currentColor"><path class="vp-ic-play" d="M8 5v14l11-7z"/><path class="vp-ic-pause" d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+        <div class="vp-bar">
+          <button class="vp-toggle" type="button" aria-label="Play or pause"><svg viewBox="0 0 24 24" fill="currentColor"><path class="vp-ic-play" d="M8 5v14l11-7z"/><path class="vp-ic-pause" d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+          <div class="vp-prog"><div class="vp-prog-fill"></div></div>
+          <span class="vp-time">0:00</span>
+          <div class="vp-speed">
+            <button class="vp-speed-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Playback speed">1×</button>
+            <ul class="vp-speed-menu" hidden>
+              <li data-rate="2">2×</li>
+              <li data-rate="1.7">1.7×</li>
+              <li data-rate="1.5">1.5×</li>
+              <li data-rate="1.2">1.2×</li>
+              <li data-rate="1" class="active">1×</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
     <p class="demo-caption">A simple yet effective agentic framework — <span style="color:var(--accent);font-weight:700">MERIT</span> — that prioritizes high-recall retrieval and defers semantic composition to inference time.</p>
   </div>
