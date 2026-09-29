@@ -1,0 +1,19 @@
+# Keep the build context small. The shipped captions and retrieval keys (11 MB)
+# are deliberately NOT excluded: the image has to be usable on a host that only
+# has docker, with no checkout of this repo.
+.git
+.env
+output
+.cache
+.log
+log
+**/__pycache__
+**/*.pyc
+**/.ipynb_checkpoints
+
+# Datasets: mounted at run time, never baked in.
+data/EgoLife/videos
+data/EgoLife/EgoLifeQA
+benchmarks/*/data
+benchmarks/*/output
+benchmarks/*/log

@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "merit"
+version = "1.0.0"
+description = "MERIT: Multi-key Episodic Retrieval with Inference-time Temporal expansion"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+
+# Versions are the ones the reported numbers were produced with.
+#
+# torch, torchvision and flash-attn are intentionally NOT listed here: the right
+# wheel depends on the host CUDA version, so they are installed by
+# docker/Dockerfile or setup_env.sh before this package. Required versions:
+#   torch==2.6.0  torchvision==0.21.0  flash-attn==2.7.4.post1
+dependencies = [
+    "numpy==2.2.6",
+    "transformers==4.57.3",
+    "tokenizers==0.22.1",
+    "safetensors==0.7.0",
+    "huggingface-hub==0.36.0",
+    "accelerate==1.12.0",
+    "sentence-transformers==5.1.2",
+    "qwen-vl-utils==0.0.14",
+    "openai==2.8.1",
+    "tenacity==9.1.2",
+    "filelock==3.20.0",
+    "decord==0.6.0",
+    "opencv-python==4.12.0.88",
+    "pillow==12.0.0",
+    "pydantic==2.12.5",
+    "tqdm==4.67.1",
+]
+
+[project.optional-dependencies]
+# Google Gemini / Vertex AI backends. Not needed for the reported numbers.
+gemini = ["google-genai==1.65.0"]
+# AWQ-quantised local models (qwen25vl-*-awq).
+awq = ["autoawq==0.2.9"]
+# Video-MME subtitle parsing.
+benchmarks = ["pysrt==1.1.2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

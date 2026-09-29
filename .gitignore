@@ -1,0 +1,33 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+
+# Run artifacts
+output/
+.log/
+log/
+.cache/
+benchmarks/*/output/
+benchmarks/*/log/
+
+
+data/*
+!data/EgoLife/
+data/EgoLife/*
+!data/EgoLife/captions/
+benchmarks/*/data/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Internal reproduction notes; not part of the public release.
+docs/
